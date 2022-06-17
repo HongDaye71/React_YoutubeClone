@@ -1,0 +1,11 @@
+.detail {
+    padding: 0.2em;
+}
+
+.description {
+    white-space: pre-wrap;
+    /*
+    white-space: 요소의 공백 처리방법 정의
+    pre-wrap: item사이즈에 의해 줄바꿈이 필요한 경우, 줄바꿈 실행
+    */
+}

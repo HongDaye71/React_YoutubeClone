@@ -5,3 +5,24 @@
   rem: 최상위 요소 기준 몇 배인지로 크기설정
   */
 }
+
+.content {
+  display: flex;
+}
+
+.detail {
+  flex: 1 1 70%;
+  /*
+  flex: 브라우저 사이즈에 따라 공간에 맞추어 item사이즈 자동조절
+  flex property: grow shrink bias
+    -> grow: item의 증가 너비 비율 설정
+    -> shrink: item의 감소 너비 비율 설정
+      -> grow, shrink를 0으로 설정한 경우: 증가 및 감소하지 않음
+      -> grow, shrink를 1로 설정한 경우: 균등 증가 및 감소
+    -> bias: 기본 너비 설정
+  */
+}
+
+.list {
+  flex: 1 1 30%;
+}
