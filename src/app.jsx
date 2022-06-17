@@ -3,36 +3,18 @@ import styles from './app.module.css';
 import SearchHeader from './components/search_header/search_header';
 import VideoList from './components/video_list/video_list';
 
-function App() {
+function App({ youtube }) {
   const [videos, setVideos] = useState([]);
   const search = query => {
-    const requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-    
-    fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=[KEYCODE]`, requestOptions)
-      .then(response => response.json())
-      .then(result => result.items.map(item => ({...item, id: item.id.videoId})))
-      .then(items => setVideos(items))
-      /*
-      key warning error: 
-      search api사용 시, id가 오브젝트 형태로 들어가있어 비디오가 고유의 key를 갖지 않는다는 warning message가 출력됨
-      따라서 setVideos를 통해 result.items을 videos에 넣기 전, item복사 후 id를 추가하는 별도 작업 필요
-      */
-      .catch(error => console.log('error', error));
+    youtube
+      .search(query)
+      .then(videos => setVideos(videos));
   }
 
   useEffect(()=> {
-    const requestOptions = { //1. fetch option setting
-      method: 'GET',
-      redirect: 'follow'
-    };
-    
-    fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=[KEYCODE]", requestOptions) //2. fetch가 정상적으로 받아지면
-      .then(response => response.json()) //3. 이를 json으로 변환하고
-      .then(result => setVideos(result.items)) //4. 변환된 결과 중 items을 setVideos에 할당 
-      .catch(error => console.log('error', error));
+    youtube
+      .mostPopular()
+      .then(videos => setVideos(videos));
   }, []);
 
   return (
