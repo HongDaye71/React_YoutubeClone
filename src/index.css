@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+  /*
+  box-sizing: 박스의 크기를 어떤 것을 기준으로 계산할지 정하는 속성
+  border-box: 박스 테두리를 기준으로 크기를 설정
+
+  *: all
+  */
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+
+  /*
+  app.module.css파일 내 app에서 위 코드를 적용:
+  SearchHeader와 VideoList에 display:flex가 적용되면서 두 개가 수평배치되는 문제가 있음
+
+  index.css파일 내 root에서 위 코드를 적용:
+  App에 display:flex가 적용되면서 SearchHeader와 VideoList가 수평배치 되지 않고, 가운데 정렬됨 ;
+  */
+}
